@@ -1,0 +1,12 @@
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\Master Arepa.deps.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\Master Arepa.runtimeconfig.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\Master Arepa.runtimeconfig.dev.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\Master Arepa.dll
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\Master Arepa.pdb
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.csproj.CoreCompileInputs.cache
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.AssemblyInfoInputs.cache
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.AssemblyInfo.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.dll
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.pdb
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\Master Arepa.csprojResolveAssemblyReference.cache

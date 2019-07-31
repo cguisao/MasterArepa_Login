@@ -1,0 +1,15 @@
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\hostpolicy.dll
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\hostfxr.dll
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.exe
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.deps.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.runtimeconfig.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.runtimeconfig.dev.json
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.dll
+D:\Master Arepa\Master Arepa\Master Arepa\bin\Debug\netcoreapp2.0\win8-x64\Master Arepa.pdb
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.csprojResolveAssemblyReference.cache
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.csproj.CoreCompileInputs.cache
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\UserSecretsAssemblyInfo.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.AssemblyInfoInputs.cache
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.AssemblyInfo.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.dll
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Debug\netcoreapp2.0\win8-x64\Master Arepa.pdb

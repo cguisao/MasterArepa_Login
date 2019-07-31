@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RuntimeIdentifier>win8-x64</RuntimeIdentifier>
+    <UserSecretsId>aspnet-Master_Arepa-68560787-37AF-4CAD-AD3D-B320460C5D20</UserSecretsId>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\Admin\assets\vendors\general\dropzone\.idea\encodings.xml" />
+    <Content Include="wwwroot\Admin\assets\vendors\general\dropzone\.idea\modules.xml" />
+    <Content Include="wwwroot\Admin\assets\vendors\general\dropzone\.idea\vcs.xml" />
+    <Content Include="wwwroot\Admin\assets\vendors\general\dropzone\.idea\workspace.xml" />
+    <Content Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.6" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" PrivateAssets="All" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="wwwroot\Admin\assets\vendors\general\bootstrap-select\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\bootstrap-select\.github\move.yml" />
+    <None Include="wwwroot\Admin\assets\vendors\general\clipboard\.github\issue_template.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\dropzone\.idea\github-dropzone.iml" />
+    <None Include="wwwroot\Admin\assets\vendors\general\handlebars\node_modules\.bin\uglifyjs" />
+    <None Include="wwwroot\Admin\assets\vendors\general\handlebars\node_modules\.bin\uglifyjs.cmd" />
+    <None Include="wwwroot\Admin\assets\vendors\general\jquery-form\.circleci\config.yml" />
+    <None Include="wwwroot\Admin\assets\vendors\general\jquery-form\.github\issue_template.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\.bin\nopt" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\.bin\nopt.cmd" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\.npmignore" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\bin\nopt.js" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\examples\my-program.js" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\lib\nopt.js" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\LICENSE" />
+    <None Include="wwwroot\Admin\assets\vendors\general\markdown\node_modules\nopt\README.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\summernote\.github\CODE_OF_CONDUCT.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\summernote\.github\CONTRIBUTING.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\summernote\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\Admin\assets\vendors\general\summernote\.github\PULL_REQUEST_TEMPLATE.md" />
+  </ItemGroup>
+
+</Project>
