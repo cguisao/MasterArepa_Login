@@ -2,6 +2,30 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "EFCore.BulkExtensions/2.5.2": {
+        "type": "package",
+        "dependencies": {
+          "FastMember": "1.5.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        }
+      },
+      "FastMember/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5648,6 +5672,30 @@
       }
     },
     ".NETCoreApp,Version=v2.2/win8-x64": {
+      "EFCore.BulkExtensions/2.5.2": {
+        "type": "package",
+        "dependencies": {
+          "FastMember": "1.5.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        }
+      },
+      "FastMember/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -11224,6 +11272,30 @@
     }
   },
   "libraries": {
+    "EFCore.BulkExtensions/2.5.2": {
+      "sha512": "83B5P0UMDy0gp3lTin7xSfDwfodRsbpXL1zely1SQDOEtBpmruHX2UdUUJiSMvHgyc9tM6R9Tu5eCwnGtolx4w==",
+      "type": "package",
+      "path": "efcore.bulkextensions/2.5.2",
+      "files": [
+        ".signature.p7s",
+        "efcore.bulkextensions.2.5.2.nupkg.sha512",
+        "efcore.bulkextensions.nuspec",
+        "lib/netstandard2.0/EFCore.BulkExtensions.dll"
+      ]
+    },
+    "FastMember/1.5.0": {
+      "sha512": "AqjQ1PQhRontkZ20RaMx+FEqRqF1146qJdedRKBCgXGOduUy/nMEXVuSQV5Ry21gE/tAuHRZyfQRdBjoQDIGvw==",
+      "type": "package",
+      "path": "fastmember/1.5.0",
+      "files": [
+        ".signature.p7s",
+        "fastmember.1.5.0.nupkg.sha512",
+        "fastmember.nuspec",
+        "lib/net461/FastMember.dll",
+        "lib/netcoreapp2.0/FastMember.dll",
+        "lib/netstandard2.0/FastMember.dll"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -20910,6 +20982,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "EFCore.BulkExtensions >= 2.5.2",
       "Microsoft.AspNetCore.All >= 2.2.6",
       "Microsoft.AspNetCore.ResponseCompression >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.6",
@@ -20961,6 +21034,10 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "EFCore.BulkExtensions": {
+            "target": "Package",
+            "version": "[2.5.2, )"
+          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.2.6, )"

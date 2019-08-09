@@ -2,3 +2,5 @@
 Master Arepa/obj/
 .vs/Master Arepa/v15/Server/sqlite3/storage.ide-wal
 .vs/Master Arepa/v15/Server/sqlite3/storage.ide
+.vs/
+Master Arepa/bin/Debug/netcoreapp2.2/win8-x64/Master Arepa.deps.json

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Master_Arepa.Models;
+using Master_Arepa.Models.ArepaViewModels;
 
 namespace Master_Arepa.Data
 {
@@ -14,6 +15,9 @@ namespace Master_Arepa.Data
             : base(options)
         {
         }
+
+        public DbSet<HomeInventory> HomeInventory { get; set; }
+        public DbSet<FoodTruckInventory> FoodTruckInventory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
