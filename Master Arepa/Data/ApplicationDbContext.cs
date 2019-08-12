@@ -16,8 +16,7 @@ namespace Master_Arepa.Data
         {
         }
 
-        public DbSet<HomeInventory> HomeInventory { get; set; }
-        public DbSet<FoodTruckInventory> FoodTruckInventory { get; set; }
+        public DbSet<InventoryItems> InventoryItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -20,10 +20,8 @@ namespace Master_Arepa.Controllers
     {
         public ApplicationDbContext _context;
 
-        protected List<HomeInventory> HomeInventory = new List<HomeInventory>();
-
-        protected List<FoodTruckInventory> FoodTruckInventory = new List<FoodTruckInventory>();
-
+        protected List<InventoryItems> InventoryItems = new List<InventoryItems>();
+        
         public InventoryController(ApplicationDbContext context)
         {
             _context = context;
@@ -45,46 +43,16 @@ namespace Master_Arepa.Controllers
             // Deal with the data from the database
             try
             {
-                HomeInventory = _context.HomeInventory.ToList();
+                InventoryItems = _context.InventoryItems.Where(x => x.Type == InventoryType.Home.ToString()).ToList();
 
-                Type type = typeof(InventoryViewModel);
-                PropertyInfo[] properties = type.GetProperties();
-
-                int id = 0;
-
-                foreach (var pro in properties)
-                {
-                    HomeInventory home = new HomeInventory();
-                    home.Id = SetID_And_Inventory_HomeInventory(pro?.Name, ref id, (int)pro.GetValue(model));
-                    home.Item = pro.Name;
-                    home.Quantity = (int)pro.GetValue(model);
-                    home.Type = InventoryType.Home.ToString();
-                    home.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow
-                            , TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
-                    if (!_context.HomeInventory.Any(x => x.Item == pro.Name))
-                        HomeInventory.Add(home);
-                }
+                ProcessInventory(model, InventoryType.Home.ToString());
             }
             catch (Exception e)
             {
                 ViewData["Error"] = e.Message;
                 return View();
             }
-
-            try
-            {
-                using (var tran = _context.Database.BeginTransaction())
-                {
-                    _context.BulkInsertOrUpdate(HomeInventory);
-                    tran.Commit();
-                }
-            }
-            catch (Exception e)
-            {
-                ViewData["Error"] = e.Message;
-                return View();
-            }
-
+            
             //try
             //{
             //    sendEmail("smtp.gmail.com", 587, "cguisao@masterarepa.com", "lotero321"
@@ -101,44 +69,48 @@ namespace Master_Arepa.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult FoodTruck(InventoryViewModel model)
+        private void ProcessInventory(InventoryViewModel model, string invType)
         {
-            try
+            Type type = typeof(InventoryViewModel);
+            PropertyInfo[] properties = type.GetProperties();
+
+            int id = 0;
+
+            foreach (var pro in properties)
             {
-                FoodTruckInventory = _context.FoodTruckInventory.ToList();
-
-                Type type = typeof(InventoryViewModel);
-                PropertyInfo[] properties = type.GetProperties();
-
-                int id = 0;
-
-                foreach (var pro in properties)
-                {
-                    FoodTruckInventory foodTruck = new FoodTruckInventory();
-                    foodTruck.Id = SetID_And_Inventory_FoodTruck(pro?.Name, ref id, (int)pro.GetValue(model));
-                    foodTruck.Item = pro.Name;
-                    foodTruck.Quantity = (int)pro.GetValue(model);
-                    foodTruck.Type = InventoryType.Food_Truck.ToString();
-                    foodTruck.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow
-                            , TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
-                    if (!_context.FoodTruckInventory.Any(x => x.Item == pro.Name))
-                        FoodTruckInventory.Add(foodTruck);
-                }
-            }
-            catch (Exception e)
-            {
-                ViewData["Error"] = e.Message;
-                return View();
+                InventoryItems home = new InventoryItems();
+                home.Id = SetID_And_Inventory_HomeInventory(pro?.Name, ref id, (int)pro.GetValue(model), invType);
+                home.Item = pro.Name;
+                home.Quantity = (int)pro.GetValue(model);
+                home.Type = invType;
+                home.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow
+                        , TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
+                if (!InventoryItems.Any(x => x.Item == pro.Name))
+                    InventoryItems.Add(home);
             }
 
             try
             {
                 using (var tran = _context.Database.BeginTransaction())
                 {
-                    _context.BulkInsertOrUpdate(FoodTruckInventory);
+                    _context.BulkInsertOrUpdate(InventoryItems);
                     tran.Commit();
                 }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpPost]
+        public IActionResult FoodTruck(InventoryViewModel model)
+        {
+            try
+            {
+                InventoryItems = _context.InventoryItems.Where(x => x.Type.Equals(InventoryType.Food_Truck)).ToList();
+
+                ProcessInventory(model, InventoryType.Food_Truck.ToString());
             }
             catch (Exception e)
             {
@@ -150,37 +122,44 @@ namespace Master_Arepa.Controllers
             return View();
         }
 
-        private int SetID_And_Inventory_HomeInventory(string name, ref int id, int quantity)
+        private int SetID_And_Inventory_HomeInventory(string name, ref int id, int quantity, string type)
         {
-            int insideId = _context.HomeInventory.Where(x => x.Item == name).Select(x => x.Id).FirstOrDefault();
-            if(_context.HomeInventory.Any(x => x.Item == name))
+            int insideId = _context.InventoryItems.Where(x => x.Item == name && x.Type == type).Select(x => x.Id).FirstOrDefault();
+            if(_context.InventoryItems.Any(x => x.Item == name && x.Type == type))
             {
-                var item = HomeInventory.ElementAt(HomeInventory.FindIndex(x => x.Id == insideId));
-                item.Quantity = HomeInventory.Find(x => x.Item == name).Quantity + quantity;
-                return _context.HomeInventory.Select(x => x.Id).FirstOrDefault();
+                var item = InventoryItems.ElementAt(InventoryItems.FindIndex(x => x.Id == insideId));
+                item.Quantity = InventoryItems.Find(x => x.Item == name).Quantity + quantity;
+                return _context.InventoryItems.Select(x => x.Id).FirstOrDefault();
             }
             else
             {
-                id = id + _context.HomeInventory.Select(x => x.Id).Count() + 1;
+                if(id == 0)
+                {
+                    id = _context.InventoryItems.Select(x => x.Id).Count() + 1;
+                }
+                else
+                {
+                    id++;
+                }
                 return id;
             }
         }
 
-        private int SetID_And_Inventory_FoodTruck(string name, ref int id, int quantity)
-        {
-            int insideId = _context.FoodTruckInventory.Where(x => x.Item == name).Select(x => x.Id).FirstOrDefault();
-            if (_context.FoodTruckInventory.Any(x => x.Item == name))
-            {
-                var item = FoodTruckInventory.ElementAt(FoodTruckInventory.FindIndex(x => x.Id == insideId));
-                item.Quantity = FoodTruckInventory.Find(x => x.Item == name).Quantity + quantity;
-                return _context.FoodTruckInventory.Select(x => x.Id).FirstOrDefault();
-            }
-            else
-            {
-                id = id + _context.FoodTruckInventory.Select(x => x.Id).Count() + 1;
-                return id;
-            }
-        }
+        //private int SetID_And_Inventory_FoodTruck(string name, ref int id, int quantity)
+        //{
+        //    int insideId = _context.FoodTruckInventory.Where(x => x.Item == name).Select(x => x.Id).FirstOrDefault();
+        //    if (_context.FoodTruckInventory.Any(x => x.Item == name))
+        //    {
+        //        var item = FoodTruckInventory.ElementAt(FoodTruckInventory.FindIndex(x => x.Id == insideId));
+        //        item.Quantity = FoodTruckInventory.Find(x => x.Item == name).Quantity + quantity;
+        //        return _context.FoodTruckInventory.Select(x => x.Id).FirstOrDefault();
+        //    }
+        //    else
+        //    {
+        //        id = id + _context.FoodTruckInventory.Select(x => x.Id).Count() + 1;
+        //        return id;
+        //    }
+        //}
 
         public void sendEmail(string smtpClient, int port, string emailCredential, string passwordCredential,
             string fromEmail, string email, string message)

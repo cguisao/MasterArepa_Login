@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Master_Arepa.Models.ArepaViewModels
 {
-    public class HomeInventory
+    public class InventoryItems
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
