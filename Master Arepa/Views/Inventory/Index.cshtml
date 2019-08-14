@@ -41,210 +41,214 @@
     <link href="~/Admin/assets/css/demo1/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
 
 </head>
-<div class="col-lg-3">
-</div>
-<div class="col-lg-6">
-    <br />
-    <br />
-    <div class="kt-portlet">
-        <div class="kt-portlet__head">
-            <div class="kt-portlet__head-label">
-                <h3 class="kt-portlet__head-title">
-                    Home Inventory
-                </h3>
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+            <br />
+            <br />
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Home Inventory
+                        </h3>
+                    </div>
+                </div>
+                <form asp-controller="Inventory" asp-action="Index" asp-antiforgery="false"
+                      enctype="multipart/form-data" class="kt-form">
+                    <div class="kt-portlet__body">
+                        <div class="kt-section kt-section--first">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            @if (@ViewData["Error"] != null)
+                            {
+                                <div class="alert alert-outline-danger fade show alert-dismissible" role="alert">
+                                    <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                    <div class="alert-close">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <i class="mdi mdi-close-circle font-32"></i>@ViewData["Error"]
+                                </div>
+                            }
+                            @if (@ViewData["Success"] != null)
+                            {
+                                <div class="alert alert alert-outline-success fade show alert-dismissible" role="alert">
+                                    <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                    <div class="alert-close">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <i class="mdi mdi-close-circle font-32"></i>@ViewData["Success"]
+                                </div>
+                            }
+                            <label>Master Arepa:</label>
+                            <div class="form-group row">
+                                <label asp-for="Master_Meat" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Master_Meat" required="required" value="0" name="Master_Meat" class="form-control" />
+                                    <span asp-validation-for="Master_Meat" class="form-text text-muted">Master Chicken / Steak</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Master_Chorizo" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Master_Chorizo" required="required" value="0" name="Master_Chorizo" class="form-control" />
+                                    <span asp-validation-for="Master_Chorizo" class="form-text text-muted">Master Chorizo / Chicharron</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Steak_Arepa" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Steak_Arepa" required="required" value="0" name="Steak_Arepa" class="form-control" />
+                                    <span asp-validation-for="Steak_Arepa" class="form-text text-muted">Steak Arepa</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Chicken_Arepa" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Chicken_Arepa" required="required" value="0" name="Chicken_Arepa" class="form-control" />
+                                    <span asp-validation-for="Chicken_Arepa" class="form-text text-muted">Chicken Arepa</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Choclo_Arepa" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Choclo_Arepa" required="required" value="0" name="Choclo_Arepa" class="form-control" />
+                                    <span asp-validation-for="Choclo_Arepa" class="form-text text-muted">Choclo Arepa</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Burger" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Burger" required="required" value="0" name="Burger" class="form-control" />
+                                    <span asp-validation-for="Burger" class="form-text text-muted">Burger</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Tequenos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Tequenos" required="required" value="0" name="Tequenos" class="form-control" />
+                                    <span asp-validation-for="Tequenos" class="form-text text-muted">Tequenos</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Chicharron" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Chicharron" required="required" value="0" name="Chicharron" class="form-control" />
+                                    <span asp-validation-for="Chicharron" class="form-text text-muted">Chicharron</span>
+                                </div>
+                            </div>
+                            <label>Empanadas:</label>
+                            <div class="form-group row">
+                                <label asp-for="Steak_Empanada" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Steak_Empanada" required="required" value="0" name="Steak_Empanada" class="form-control" />
+                                    <span asp-validation-for="Steak_Empanada" class="form-text text-muted">Steak Empanada</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Chicken_Empanada" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Chicken_Empanada" required="required" value="0" name="Chicken_Empanada" class="form-control" />
+                                    <span asp-validation-for="Chicken_Empanada" class="form-text text-muted">Chicken Empanada</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Cheese_Empanada" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Cheese_Empanada" required="required" value="0" name="Cheese_Empanada" class="form-control" />
+                                    <span asp-validation-for="Cheese_Empanada" class="form-text text-muted">Cheese Empanada</span>
+                                </div>
+                            </div>
+                            <label>Master Picada:</label>
+                            <div class="form-group row">
+                                <label asp-for="Master_Picada_Meat" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Master_Picada_Meat" required="required" value="0" name="Master_Picada_Meat" class="form-control" />
+                                    <span asp-validation-for="Master_Picada_Meat" class="form-text text-muted">Master Picada Chicken / Steak</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Master_Picada_Chorizo" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Master_Picada_Chorizo" required="required" value="0" name="Master_Picada_Chorizo" class="form-control" />
+                                    <span asp-validation-for="Master_Picada_Chorizo" class="form-text text-muted">Master Picada Chorizo / Chicharron</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Salchipapas" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Salchipapas" required="required" value="0" name="Salchipapas" class="form-control" />
+                                    <span asp-validation-for="Salchipapas" class="form-text text-muted">Salchipapas</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Wings" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Wings" required="required" value="0" name="Wings" class="form-control" />
+                                    <span asp-validation-for="Wings" class="form-text text-muted">Wings</span>
+                                </div>
+                            </div>
+                            <label>Tacos:</label>
+                            <div class="form-group row">
+                                <label asp-for="Steak_Tacos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Steak_Tacos" required="required" value="0" name="Steak_Tacos" class="form-control" />
+                                    <span asp-validation-for="Steak_Tacos" class="form-text text-muted">Steak Tacos</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Chicken_Tacos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Chicken_Tacos" required="required" value="0" name="Chicken_Tacos" class="form-control" />
+                                    <span asp-validation-for="Chicken_Tacos" class="form-text text-muted">Chicken Tacos</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Chorizo_Tacos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Chorizo_Tacos" required="required" value="0" name="Chorizo_Tacos" class="form-control" />
+                                    <span asp-validation-for="Chorizo_Tacos" class="form-text text-muted">Chorizo Tacos</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Al_Pastor_Tacos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Al_Pastor_Tacos" required="required" value="0" name="Al_Pastor_Tacos" class="form-control" />
+                                    <span asp-validation-for="Al_Pastor_Tacos" class="form-text text-muted">Al Pastor Tacos</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Shrimp_Tacos" class="col-3 col-form-label"></label>
+                                <div class="col-9">
+                                    <input asp-for="Shrimp_Tacos" required="required" value="0" name="Shrimp_Tacos" class="form-control" />
+                                    <span asp-validation-for="Shrimp_Tacos" class="form-text text-muted">Shrimp Tacos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <form asp-controller="Inventory" asp-action="Index" asp-antiforgery="false"
-              enctype="multipart/form-data" class="kt-form">
-            <div class="kt-portlet__body">
-                <div class="kt-section kt-section--first">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    @if (@ViewData["Error"] != null)
-                    {
-                    <div class="alert alert-outline-danger fade show alert-dismissible" role="alert">
-                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <i class="mdi mdi-close-circle font-32"></i>@ViewData["Error"]
-                    </div>
-                    }
-                    @if (@ViewData["Success"] != null)
-                    {
-                    <div class="alert alert alert-outline-success fade show alert-dismissible" role="alert">
-                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <i class="mdi mdi-close-circle font-32"></i>@ViewData["Success"]
-                    </div>
-                    }
-                    <label>Master Arepa:</label>
-                    <div class="form-group row">
-                        <label asp-for="Master_Meat" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Master_Meat" required="required" value="0" name="Master_Meat" class="form-control" />
-                            <span asp-validation-for="Master_Meat" class="form-text text-muted">Master Chicken / Steak</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Master_Chorizo" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Master_Chorizo" required="required" value="0" name="Master_Chorizo" class="form-control" />
-                            <span asp-validation-for="Master_Chorizo" class="form-text text-muted">Master Chorizo / Chicharron</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Steak_Arepa" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Steak_Arepa" required="required" value="0" name="Steak_Arepa" class="form-control" />
-                            <span asp-validation-for="Steak_Arepa" class="form-text text-muted">Steak Arepa</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Chicken_Arepa" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Chicken_Arepa" required="required" value="0" name="Chicken_Arepa" class="form-control" />
-                            <span asp-validation-for="Chicken_Arepa" class="form-text text-muted">Chicken Arepa</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Choclo_Arepa" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Choclo_Arepa" required="required" value="0" name="Choclo_Arepa" class="form-control" />
-                            <span asp-validation-for="Choclo_Arepa" class="form-text text-muted">Choclo Arepa</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Burger" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Burger" required="required" value="0" name="Burger" class="form-control" />
-                            <span asp-validation-for="Burger" class="form-text text-muted">Burger</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Tequenos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Tequenos" required="required" value="0" name="Tequenos" class="form-control" />
-                            <span asp-validation-for="Tequenos" class="form-text text-muted">Tequenos</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Chicharron" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Chicharron" required="required" value="0" name="Chicharron" class="form-control" />
-                            <span asp-validation-for="Chicharron" class="form-text text-muted">Chicharron</span>
-                        </div>
-                    </div>
-                    <label>Empanadas:</label>
-                    <div class="form-group row">
-                        <label asp-for="Steak_Empanada" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Steak_Empanada" required="required" value="0" name="Steak_Empanada" class="form-control" />
-                            <span asp-validation-for="Steak_Empanada" class="form-text text-muted">Steak Empanada</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Chicken_Empanada" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Chicken_Empanada" required="required" value="0" name="Chicken_Empanada" class="form-control" />
-                            <span asp-validation-for="Chicken_Empanada" class="form-text text-muted">Chicken Empanada</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Cheese_Empanada" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Cheese_Empanada" required="required" value="0" name="Cheese_Empanada" class="form-control" />
-                            <span asp-validation-for="Cheese_Empanada" class="form-text text-muted">Cheese Empanada</span>
-                        </div>
-                    </div>
-                    <label>Master Picada:</label>
-                    <div class="form-group row">
-                        <label asp-for="Master_Picada_Meat" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Master_Picada_Meat" required="required" value="0" name="Master_Picada_Meat" class="form-control" />
-                            <span asp-validation-for="Master_Picada_Meat" class="form-text text-muted">Master Picada Chicken / Steak</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Master_Picada_Chorizo" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Master_Picada_Chorizo" required="required" value="0" name="Master_Picada_Chorizo" class="form-control" />
-                            <span asp-validation-for="Master_Picada_Chorizo" class="form-text text-muted">Master Picada Chorizo / Chicharron</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Salchipapas" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Salchipapas" required="required" value="0" name="Salchipapas" class="form-control" />
-                            <span asp-validation-for="Salchipapas" class="form-text text-muted">Salchipapas</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Wings" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Wings" required="required" value="0" name="Wings" class="form-control" />
-                            <span asp-validation-for="Wings" class="form-text text-muted">Wings</span>
-                        </div>
-                    </div>
-                    <label>Tacos:</label>
-                    <div class="form-group row">
-                        <label asp-for="Steak_Tacos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Steak_Tacos" required="required" value="0" name="Steak_Tacos" class="form-control" />
-                            <span asp-validation-for="Steak_Tacos" class="form-text text-muted">Steak Tacos</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Chicken_Tacos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Chicken_Tacos" required="required" value="0" name="Chicken_Tacos" class="form-control" />
-                            <span asp-validation-for="Chicken_Tacos" class="form-text text-muted">Chicken Tacos</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Chorizo_Tacos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Chorizo_Tacos" required="required" value="0" name="Chorizo_Tacos" class="form-control" />
-                            <span asp-validation-for="Chorizo_Tacos" class="form-text text-muted">Chorizo Tacos</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Al_Pastor_Tacos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Al_Pastor_Tacos" required="required" value="0" name="Al_Pastor_Tacos" class="form-control" />
-                            <span asp-validation-for="Al_Pastor_Tacos" class="form-text text-muted">Al Pastor Tacos</span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="Shrimp_Tacos" class="col-3 col-form-label"></label>
-                        <div class="col-9">
-                            <input asp-for="Shrimp_Tacos" required="required" value="0" name="Shrimp_Tacos" class="form-control" />
-                            <span asp-validation-for="Shrimp_Tacos" class="form-text text-muted">Shrimp Tacos</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-portlet__foot">
-                <div class="kt-form__actions">
-                    <div class="row">
-                        <div class="col-2">
-                        </div>
-                        <div class="col-10">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+        <div class="col-lg-3">
+        </div>
     </div>
-</div>
-<div class="col-lg-3">
 </div>
 <!-- begin::Global Config(global config for global JS sciprts) -->
 <script>

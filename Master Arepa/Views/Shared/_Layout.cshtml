@@ -97,6 +97,7 @@ else
                                                 <ul class="kt-menu__subnav">
                                                     <li class="kt-menu__item " aria-haspopup="true"><a asp-area="" class="kt-menu__link" asp-controller="Inventory" asp-action="Index"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Home Inventory</span></a></li>
                                                     <li class="kt-menu__item " aria-haspopup="true"><a asp-area="" class="kt-menu__link" asp-controller="Inventory" asp-action="FoodTruck"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Food Truck Inventory</span></a></li>
+                                                    <li class="kt-menu__item " aria-haspopup="true"><a asp-area="" class="kt-menu__link" asp-controller="Inventory" asp-action="Transfer"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Transfer Inventory</span></a></li>
                                                     <li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                                                         <a href="#" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Audience</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                                                         <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
@@ -245,11 +246,11 @@ else
                     <!-- Inner Body -->
                     @*<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
                         <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">*@
-                            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-                                <div class="row">
+                            @*<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                                <div class="row">*@
                                     @RenderBody()
-                                </div>
-                            </div>
+                                @*</div>
+                            </div>*@
                         @*</div>
                     </div>*@
                     <!-- End Inner Body-->

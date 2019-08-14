@@ -21,6 +21,8 @@ namespace Master_Arepa.Controllers
         public ApplicationDbContext _context;
 
         protected List<InventoryItems> InventoryItems = new List<InventoryItems>();
+
+        protected List<InventoryTransfer> InventoryTransfer = new List<InventoryTransfer>();
         
         public InventoryController(ApplicationDbContext context)
         {
@@ -33,6 +35,11 @@ namespace Master_Arepa.Controllers
         }
 
         public IActionResult FoodTruck()
+        {
+            return View();
+        }
+
+        public IActionResult Transfer()
         {
             return View();
         }
@@ -79,7 +86,7 @@ namespace Master_Arepa.Controllers
             foreach (var pro in properties)
             {
                 InventoryItems home = new InventoryItems();
-                home.Id = SetID_And_Inventory_HomeInventory(pro?.Name, ref id, (int)pro.GetValue(model), invType);
+                home.Id = SetID_And_Inventory(pro?.Name, ref id, (int)pro.GetValue(model), invType);
                 home.Item = pro.Name;
                 home.Quantity = (int)pro.GetValue(model);
                 home.Type = invType;
@@ -108,7 +115,7 @@ namespace Master_Arepa.Controllers
         {
             try
             {
-                InventoryItems = _context.InventoryItems.Where(x => x.Type.Equals(InventoryType.Food_Truck)).ToList();
+                InventoryItems = _context.InventoryItems.Where(x => x.Type == InventoryType.Food_Truck.ToString()).ToList();
 
                 ProcessInventory(model, InventoryType.Food_Truck.ToString());
             }
@@ -122,9 +129,12 @@ namespace Master_Arepa.Controllers
             return View();
         }
 
-        private int SetID_And_Inventory_HomeInventory(string name, ref int id, int quantity, string type)
+        private int SetID_And_Inventory(string name, ref int id, int quantity, string type)
         {
-            int insideId = _context.InventoryItems.Where(x => x.Item == name && x.Type == type).Select(x => x.Id).FirstOrDefault();
+            int insideId = _context.InventoryItems
+                .Where(x => x.Item == name && x.Type == type)
+                    .Select(x => x.Id).FirstOrDefault();
+
             if(_context.InventoryItems.Any(x => x.Item == name && x.Type == type))
             {
                 var item = InventoryItems.ElementAt(InventoryItems.FindIndex(x => x.Id == insideId));
@@ -145,21 +155,93 @@ namespace Master_Arepa.Controllers
             }
         }
 
-        //private int SetID_And_Inventory_FoodTruck(string name, ref int id, int quantity)
-        //{
-        //    int insideId = _context.FoodTruckInventory.Where(x => x.Item == name).Select(x => x.Id).FirstOrDefault();
-        //    if (_context.FoodTruckInventory.Any(x => x.Item == name))
-        //    {
-        //        var item = FoodTruckInventory.ElementAt(FoodTruckInventory.FindIndex(x => x.Id == insideId));
-        //        item.Quantity = FoodTruckInventory.Find(x => x.Item == name).Quantity + quantity;
-        //        return _context.FoodTruckInventory.Select(x => x.Id).FirstOrDefault();
-        //    }
-        //    else
-        //    {
-        //        id = id + _context.FoodTruckInventory.Select(x => x.Id).Count() + 1;
-        //        return id;
-        //    }
-        //}
+        [HttpPost]
+        public IActionResult Transfer(InventoryViewModel model)
+        {
+            // get the data from the database
+
+            InventoryItems = _context.InventoryItems.ToList();
+
+            //InventoryTransfer = _context.InventoryTransfer.ToList();
+
+            // update the data on the database 
+            // Move data from Home to Food Truck inventory
+
+            Type type = typeof(InventoryViewModel);
+            PropertyInfo[] properties = type.GetProperties();
+
+            int id = 0;
+
+            int transferId = _context.InventoryTransfer.Count();
+
+            foreach (var pro in properties)
+            {
+                // delete data from Home inventory
+
+                id = InventoryItems
+                .Where(x => x.Item == pro.Name && x.Type == InventoryType.Home.ToString())
+                    .Select(x => x.Id).FirstOrDefault();
+
+                var Home = InventoryItems
+                    .ElementAt(InventoryItems
+                        .FindIndex(x => x.Id == id && x.Type == InventoryType.Home.ToString()));
+                Home.Quantity = InventoryItems.Find(x => x.Item == pro.Name).Quantity - (int)pro.GetValue(model);
+
+                id = InventoryItems
+                .Where(x => x.Item == pro.Name && x.Type == InventoryType.Food_Truck.ToString())
+                    .Select(x => x.Id).FirstOrDefault();
+
+                var FoodTruck = InventoryItems
+                    .ElementAt(InventoryItems
+                        .FindIndex(x => x.Id == id && x.Type == InventoryType.Food_Truck.ToString()));
+                FoodTruck.Quantity = FoodTruck.Quantity + (int)pro.GetValue(model);
+
+                InventoryTransfer.
+                        Add(new InventoryTransfer
+                        {
+                            Id = transferId++,
+                            Item = pro.Name,
+                            Quantity = (int)pro.GetValue(model),
+                            TimeStamp = DateTime.Parse(TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow
+                                , TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time")).AddDays(1).ToString("MM/dd/yyyy"))
+                        }
+                    );
+
+            }
+
+            try
+            {
+                using (var tran = _context.Database.BeginTransaction())
+                {
+                    _context.BulkInsertOrUpdate(InventoryItems);
+                    tran.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["Error"] = e.Message;
+                return View();
+            }
+
+            // save the transfer on the database
+
+            try
+            {
+                using (var tran = _context.Database.BeginTransaction())
+                {
+                    _context.BulkInsertOrUpdate(InventoryTransfer);
+                    tran.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["Error"] = e.Message;
+                return View();
+            }
+
+            ViewData["Success"] = "Food Truck Transfer Updated Successfully!";
+            return View();
+            }
 
         public void sendEmail(string smtpClient, int port, string emailCredential, string passwordCredential,
             string fromEmail, string email, string message)

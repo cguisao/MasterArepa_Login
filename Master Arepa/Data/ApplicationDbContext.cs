@@ -18,6 +18,8 @@ namespace Master_Arepa.Data
 
         public DbSet<InventoryItems> InventoryItems { get; set; }
 
+        public DbSet<InventoryTransfer> InventoryTransfer { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
