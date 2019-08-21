@@ -57,3 +57,8 @@ D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Mas
 D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Master Arepa.dll
 D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Master Arepa.pdb
 D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Master Arepa.csproj.CopyComplete
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Razor\Views\Inventory\FoodTruck.g.cshtml.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Razor\Views\Inventory\Index.g.cshtml.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Razor\Views\Inventory\Transfer.g.cshtml.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Razor\Views\Shared\_GlobalHeaderScriptsPartial.g.cshtml.cs
+D:\Master Arepa\Master Arepa\Master Arepa\obj\Release\netcoreapp2.2\win8-x64\Razor\Views\Shared\_ValidationGlobalScriptsPartial.g.cshtml.cs

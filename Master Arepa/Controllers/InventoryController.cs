@@ -15,6 +15,8 @@ using EFCore.BulkExtensions;
 
 namespace Master_Arepa.Controllers
 {
+
+    [Route("api/[controller]")]
     [Authorize]
     public class InventoryController : Controller
     {
@@ -42,6 +44,12 @@ namespace Master_Arepa.Controllers
         public IActionResult Transfer()
         {
             return View();
+        }
+
+        [HttpGet("action")]
+        public IEnumerable<InventoryItems> GetThings()
+        {
+            return _context.InventoryItems.ToList();
         }
 
         [HttpPost]

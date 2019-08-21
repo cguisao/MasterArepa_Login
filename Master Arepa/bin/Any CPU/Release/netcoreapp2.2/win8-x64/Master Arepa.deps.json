@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win8-x64",
-    "signature": "dd91c7c7be3c66b3bd4af3cec5d3a52505d41589"
+    "signature": "1978f17c4eac579d819805cd438d37528eb8d408"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "Master Arepa/1.0.0": {
         "dependencies": {
+          "EFCore.BulkExtensions": "2.5.2",
           "Microsoft.AspNetCore.All": "2.2.6",
           "Microsoft.AspNetCore.ResponseCompression": "2.2.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.2.6",
@@ -32,6 +33,22 @@
         },
         "compile": {
           "Master Arepa.dll": {}
+        }
+      },
+      "EFCore.BulkExtensions/2.5.2": {
+        "dependencies": {
+          "FastMember": "1.5.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        }
+      },
+      "FastMember/1.5.0": {
+        "compile": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -3650,6 +3667,7 @@
     ".NETCoreApp,Version=v2.2/win8-x64": {
       "Master Arepa/1.0.0": {
         "dependencies": {
+          "EFCore.BulkExtensions": "2.5.2",
           "Microsoft.AspNetCore.All": "2.2.6",
           "Microsoft.AspNetCore.ResponseCompression": "2.2.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.2.6",
@@ -3658,6 +3676,28 @@
         },
         "runtime": {
           "Master Arepa.dll": {}
+        }
+      },
+      "EFCore.BulkExtensions/2.5.2": {
+        "dependencies": {
+          "FastMember": "1.5.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {
+            "assemblyVersion": "2.5.2.0",
+            "fileVersion": "2.5.2.0"
+          }
+        }
+      },
+      "FastMember/1.5.0": {
+        "runtime": {
+          "lib/netcoreapp2.0/FastMember.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
         }
       },
       "Libuv/1.10.0": {
@@ -8712,6 +8752,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "EFCore.BulkExtensions/2.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-83B5P0UMDy0gp3lTin7xSfDwfodRsbpXL1zely1SQDOEtBpmruHX2UdUUJiSMvHgyc9tM6R9Tu5eCwnGtolx4w==",
+      "path": "efcore.bulkextensions/2.5.2",
+      "hashPath": "efcore.bulkextensions.2.5.2.nupkg.sha512"
+    },
+    "FastMember/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AqjQ1PQhRontkZ20RaMx+FEqRqF1146qJdedRKBCgXGOduUy/nMEXVuSQV5Ry21gE/tAuHRZyfQRdBjoQDIGvw==",
+      "path": "fastmember/1.5.0",
+      "hashPath": "fastmember.1.5.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",
